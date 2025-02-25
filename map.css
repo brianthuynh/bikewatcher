@@ -24,14 +24,53 @@ html, body {
 }
 
 #map svg circle {
-    fill: steelblue;         /* Set the color of the circles */
     fill-opacity: 0.6;       /* Set the transparency of the circles to 60% */
     stroke: white;           /* Define a white stroke (border) around each circle */
     stroke-width: 1;         /* Set the width of the stroke */
     pointer-events: auto;
 }
 
+svg circle, .legend > div{ 
+    --color-departures: steelblue;
+    --color-arrivals: darkorange;
+    --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+    );
+    fill: var(--color);
+}
 
+.legend {
+    display: flex; /* Enables Flexbox */
+    justify-content: space-between; /* Space items evenly */
+    align-items: center; /* Align items vertically */
+    margin-block: 20px; /* Space above and below the legend */
+    padding: 10px 0; /* Padding inside the legend */
+    width: 100%;
+}
 
+.legend > div {
+    flex: 1; /* Each child takes equal space */
+    text-align: center; /* Centers text in each div */
+    color: white; /* White text for better contrast */
+    padding: 10px 20px; /* Padding inside each swatch */
+    margin: 0 1px; /* Small gap between swatches */
+}
+
+/* Adjust the text alignment individually if needed */
+.legend > div:first-child { text-align: left;
+                            background: steelblue;
+                        }
+.legend > div:nth-child(2){text-align:center;
+                            background: color-mix(
+                                in oklch,
+                                var(--color-departures) calc(100% * var(--departure-ratio)),
+                                var(--color-arrivals)
+                                );
+                            }
+.legend > div:last-child { text-align: right; 
+                            background: darkorange;
+                        }
 
 

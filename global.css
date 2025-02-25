@@ -10,3 +10,24 @@ body {
   }
 
 
+header{
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+  margin-left: auto;
+}
+
+
+
+
+em, time {
+  display: block; /* Ensures these elements appear on new lines */
+  text-align: left; /* Aligns text to the left */
+  margin-top: 5px; /* Space above text */
+}
+
+em {
+  color: #999;
+  font-style: italic;
+}
+
